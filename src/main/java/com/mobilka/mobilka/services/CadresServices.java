@@ -9,5 +9,5 @@ public interface CadresServices {
     Cadres addCadr(Cadres cadr);
     Cadres getCadr(Long id);
     Cadres editCadr(Cadres cadr);
-    void deleteCadr(Long id);
+    void deleteCadr(Cadres cadr);
 }
