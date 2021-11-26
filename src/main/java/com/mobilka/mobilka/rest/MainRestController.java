@@ -1,8 +1,11 @@
 package com.mobilka.mobilka.rest;
 
 import com.mobilka.mobilka.entities.Cadres;
+import com.mobilka.mobilka.entities.Films;
 import com.mobilka.mobilka.repositories.CadresRepository;
+import com.mobilka.mobilka.repositories.FilmsRepository;
 import com.mobilka.mobilka.services.CadresServices;
+import com.mobilka.mobilka.services.FilmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api")
 public class MainRestController {
 
@@ -19,11 +22,17 @@ public class MainRestController {
     private CadresServices cadresServices;
 
     @Autowired
-    private CadresRepository cadresRepository;
+    private FilmsServices filmsServices;
 
     @GetMapping(value = "/allCadres")
-    public ResponseEntity<?> getAllCadres(@RequestParam(name = "id") Long id) {
+    public ResponseEntity<?> getAllCadres() {
         List<Cadres> cadres = cadresServices.getAllCadres();
         return new ResponseEntity<>(cadres, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allFilms")
+    public ResponseEntity<?> getAllFilms() {
+        List<Films> films = filmsServices.getAllFilms();
+        return new ResponseEntity<>(films, HttpStatus.OK);
     }
 }

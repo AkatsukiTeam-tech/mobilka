@@ -1,4 +1,7 @@
 package com.mobilka.mobilka.repositories;
 
-public interface FilmsRepository {
+import com.mobilka.mobilka.entities.Films;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface FilmsRepository extends JpaRepository<Films, Long> {
 }
