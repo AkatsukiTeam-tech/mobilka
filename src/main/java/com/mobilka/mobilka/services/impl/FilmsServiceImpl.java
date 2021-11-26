@@ -5,9 +5,11 @@ import com.mobilka.mobilka.repositories.CadresRepository;
 import com.mobilka.mobilka.repositories.FilmsRepository;
 import com.mobilka.mobilka.services.FilmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class FilmsServiceImpl implements FilmsServices {
 
     @Autowired
