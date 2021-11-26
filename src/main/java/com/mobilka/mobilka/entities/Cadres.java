@@ -20,6 +20,6 @@ public class Cadres {
     @Column(name = "url")
     private String cadr_url;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     private Films film;
 }
