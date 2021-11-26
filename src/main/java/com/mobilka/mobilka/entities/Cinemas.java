@@ -23,4 +23,7 @@ public class Cinemas {
 
     @Column(name = "address")
     private String ciname_address;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    private Cities cities;
 }

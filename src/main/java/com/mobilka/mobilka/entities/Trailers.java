@@ -5,19 +5,21 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "t_directors")
+@Table(name = "t_trailers")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Directors {
+public class Trailers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private Long director_id;
+    private Long trailer_id;
 
-    @Column(name = "name")
-    private String full_name;
+    @Column(name = "url")
+    private String trailer_url;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Films films;
 }

@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Time;
+import java.util.List;
 
 @Entity
 @Table(name = "t_films")
@@ -25,4 +26,16 @@ public class Films {
 
     @Column(name = "date")
     private Date film_date;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Countries> countries;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Directors> directors;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Genres> genres;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Cinemas> cinemas;
 }

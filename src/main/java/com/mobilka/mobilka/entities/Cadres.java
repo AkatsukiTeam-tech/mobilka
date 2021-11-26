@@ -19,4 +19,7 @@ public class Cadres {
 
     @Column(name = "url")
     private String cadr_url;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Films film;
 }
