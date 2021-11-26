@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "t_cinemas")
@@ -25,5 +26,5 @@ public class Cinemas {
     private String ciname_address;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private Cities cities;
+    private List<Cities> cities;
 }
