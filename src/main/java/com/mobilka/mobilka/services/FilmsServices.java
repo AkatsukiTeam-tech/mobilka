@@ -1,4 +1,14 @@
 package com.mobilka.mobilka.services;
 
-public interface FilmsServices {
+import com.mobilka.mobilka.entities.Films;
+
+import java.util.List;
+
+public interface FilmsServices {    List<Films> getAllFilms();
+    List<Films> searchFilms();
+    Films addFilm(Films film);
+    Films getFilm(Long id);
+    Films editFilm(Films film);
+    void deleteFilm(Long id);
+
 }
