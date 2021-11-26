@@ -9,5 +9,5 @@ public interface CinemasServices {
     Cinemas addCinema(Cinemas cinema);
     Cinemas getCinema(Long id);
     Cinemas editCinema(Cinemas cinema);
-    void deleteCinema(Long id);
+    void deleteCinema(Cinemas cinema);
 }

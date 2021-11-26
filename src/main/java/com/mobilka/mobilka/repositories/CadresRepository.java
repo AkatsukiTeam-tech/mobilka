@@ -7,5 +7,4 @@ import java.util.List;
 
 
 public interface CadresRepository extends JpaRepository<Cadres, Long> {
-    List<Cadres> findAll();
 }

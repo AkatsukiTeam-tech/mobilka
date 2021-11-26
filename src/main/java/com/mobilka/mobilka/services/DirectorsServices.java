@@ -9,5 +9,5 @@ public interface DirectorsServices {
     Directors addDirector(Directors director);
     Directors getDirector(Long id);
     Directors editDirector(Directors director);
-    void deleteDirector(Long id);
+    void deleteDirector(Directors director);
 }

@@ -1,4 +1,7 @@
 package com.mobilka.mobilka.repositories;
 
-public interface CountriesRepository {
+import com.mobilka.mobilka.entities.Countries;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CountriesRepository extends JpaRepository<Countries, Long> {
 }

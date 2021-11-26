@@ -9,5 +9,5 @@ public interface CountriesServices {
     Countries addCountry(Countries country);
     Countries getCountry(Long id);
     Countries editCountry(Countries country);
-    void deleteCountry(Long id);
+    void deleteCountry(Countries country);
 }

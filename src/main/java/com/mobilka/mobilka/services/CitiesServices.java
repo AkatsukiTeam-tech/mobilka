@@ -9,5 +9,5 @@ public interface CitiesServices {
     Cities addCity(Cities city);
     Cities getCity(Long id);
     Cities editCity(Cities city);
-    void deleteCity(Long id);
+    void deleteCity(Cities city);
 }

@@ -9,5 +9,5 @@ public interface GenresServices {
     Genres addGenre(Genres genres);
     Genres getGenre(Long id);
     Genres editGenre(Genres genres);
-    void deleteGenre(Long id);
+    void deleteGenre(Genres genre);
 }

@@ -26,7 +26,7 @@ public class CadresServiceImpl implements CadresServices {
 
     @Override
     public Cadres getCadr(Long id) {
-        return cadresRepository.getOne(id);
+        return cadresRepository.findById(id).get();
     }
 
     @Override

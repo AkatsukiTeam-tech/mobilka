@@ -32,7 +32,7 @@ public class FilmsServiceImpl implements FilmsServices {
 
     @Override
     public Films getFilm(Long id) {
-        return filmsRepository.getOne(id);
+        return filmsRepository.findById(id).get();
     }
 
     @Override
