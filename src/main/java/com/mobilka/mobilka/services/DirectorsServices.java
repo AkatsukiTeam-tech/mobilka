@@ -1,9 +1,11 @@
 package com.mobilka.mobilka.services;
 
 import com.mobilka.mobilka.entities.Directors;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface DirectorsServices {
     List<Directors> getAllDirectors();
     Directors addDirector(Directors director);

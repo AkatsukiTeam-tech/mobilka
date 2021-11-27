@@ -2,16 +2,10 @@ package com.mobilka.mobilka.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.mobilka.mobilka.entities.Cadres;
-import com.mobilka.mobilka.entities.Cinemas;
-import com.mobilka.mobilka.entities.Countries;
-import com.mobilka.mobilka.entities.Films;
+import com.mobilka.mobilka.entities.*;
 import com.mobilka.mobilka.repositories.CadresRepository;
 import com.mobilka.mobilka.repositories.FilmsRepository;
-import com.mobilka.mobilka.services.CadresServices;
-import com.mobilka.mobilka.services.CinemasServices;
-import com.mobilka.mobilka.services.CountriesServices;
-import com.mobilka.mobilka.services.FilmsServices;
+import com.mobilka.mobilka.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,9 +27,11 @@ public class MainRestController {
     @Autowired
     private CinemasServices cinemasServices;
 
-
     @Autowired
     private CountriesServices countriesServices;
+
+    @Autowired
+    private DirectorsServices directorsServices;
 
 
     @GetMapping(value = "/allCadres")
@@ -61,5 +57,11 @@ public class MainRestController {
     public ResponseEntity<?> getAllCountries() {
         List<Countries> countries = countriesServices.getAllCountries();
         return new ResponseEntity<>(countries, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allDirectors")
+    public ResponseEntity<?> getAllDirectors() {
+        List<Directors> directors = directorsServices.getAllDirectors();
+        return new ResponseEntity<>(directors, HttpStatus.OK);
     }
 }
