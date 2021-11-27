@@ -4,11 +4,13 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.mobilka.mobilka.entities.Cadres;
 import com.mobilka.mobilka.entities.Cinemas;
+import com.mobilka.mobilka.entities.Countries;
 import com.mobilka.mobilka.entities.Films;
 import com.mobilka.mobilka.repositories.CadresRepository;
 import com.mobilka.mobilka.repositories.FilmsRepository;
 import com.mobilka.mobilka.services.CadresServices;
 import com.mobilka.mobilka.services.CinemasServices;
+import com.mobilka.mobilka.services.CountriesServices;
 import com.mobilka.mobilka.services.FilmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -32,6 +34,10 @@ public class MainRestController {
     private CinemasServices cinemasServices;
 
 
+    @Autowired
+    private CountriesServices countriesServices;
+
+
     @GetMapping(value = "/allCadres")
     public ResponseEntity<?> getAllCadres() {
         List<Cadres> cadres = cadresServices.getAllCadres();
@@ -49,5 +55,11 @@ public class MainRestController {
     public ResponseEntity<?> getAllCinemas() {
         List<Cinemas> cinemas = cinemasServices.getAllCinemas();
         return new ResponseEntity<>(cinemas, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allCountries")
+    public ResponseEntity<?> getAllCountries() {
+        List<Countries> countries = countriesServices.getAllCountries();
+        return new ResponseEntity<>(countries, HttpStatus.OK);
     }
 }
