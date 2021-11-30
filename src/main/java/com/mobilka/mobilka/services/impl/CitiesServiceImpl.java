@@ -4,9 +4,10 @@ import com.mobilka.mobilka.entities.Cities;
 import com.mobilka.mobilka.repositories.CitiesRepository;
 import com.mobilka.mobilka.services.CitiesServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CitiesServiceImpl implements CitiesServices {
 
     @Autowired

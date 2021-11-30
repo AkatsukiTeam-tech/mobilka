@@ -4,9 +4,10 @@ import com.mobilka.mobilka.entities.Genres;
 import com.mobilka.mobilka.repositories.GenresRepository;
 import com.mobilka.mobilka.services.GenresServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class GenresServiceImpl implements GenresServices {
 
     @Autowired

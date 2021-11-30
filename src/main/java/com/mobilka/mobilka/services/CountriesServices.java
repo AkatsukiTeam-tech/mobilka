@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
+
 public interface CountriesServices {
     List<Countries> getAllCountries();
     Countries addCountry(Countries country);

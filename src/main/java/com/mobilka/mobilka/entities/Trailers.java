@@ -20,6 +20,6 @@ public class Trailers {
     @Column(name = "url")
     private String trailer_url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Films films;
 }

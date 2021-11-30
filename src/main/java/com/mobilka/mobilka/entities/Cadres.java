@@ -21,6 +21,6 @@ public class Cadres implements Serializable {
     @Column(name = "url")
     private String cadr_url;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private Films film;
 }
