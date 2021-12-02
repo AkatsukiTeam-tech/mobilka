@@ -37,7 +37,6 @@ public class MainRestController {
     @GetMapping(value = "/allCadres")
     public ResponseEntity<?> getAllCadres() {
         List<Cadres> cadres = cadresServices.getAllCadres();
-        System.out.println(cadres.get(0).getFilm().toString());
         return new ResponseEntity<>(cadres, HttpStatus.OK);
     }
 
