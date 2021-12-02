@@ -4,9 +4,11 @@ import com.mobilka.mobilka.entities.Countries;
 import com.mobilka.mobilka.repositories.CountriesRepository;
 import com.mobilka.mobilka.services.CountriesServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class CountriesServiceImpl implements CountriesServices {
 
     @Autowired
