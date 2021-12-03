@@ -27,7 +27,4 @@ public class Cinemas {
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Cities> cities;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    private List<Films> films;
 }

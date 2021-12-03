@@ -18,8 +18,20 @@ public class Films {
     @Column(name = "id")
     private Long film_id;
 
-    @Column(name = "name")
-    private String film_name;
+    @Column(name = "ru_name")
+    private String film_ru_name;
+
+    @Column(name = "orig_name")
+    private String film_orig_name;
+
+    @Column(name = "image_url")
+    private String image_url;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "restriction")
+    private int restriction;
 
     @Column(name = "duration")
     private Time film_duration;
