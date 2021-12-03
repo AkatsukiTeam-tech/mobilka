@@ -46,6 +46,12 @@ public class MainRestController {
         return new ResponseEntity<>(films, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/getFilm/{id}")
+    public ResponseEntity<?> getFilm(@PathVariable(name = "id")Long id) {
+        Films film = filmsServices.getFilm(id);
+        return new ResponseEntity<>(film, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/allCinemas")
     public ResponseEntity<?> getAllCinemas() {
         List<Cinemas> cinemas = cinemasServices.getAllCinemas();

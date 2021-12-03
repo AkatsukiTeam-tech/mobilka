@@ -1,8 +1,10 @@
 package com.mobilka.mobilka.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -12,7 +14,8 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Films {
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+public class Films implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -49,5 +52,6 @@ public class Films {
     private List<Genres> genres;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    private List<Cinemas> cinemas;
+    private List<Cinemas> cinema;
+
 }
