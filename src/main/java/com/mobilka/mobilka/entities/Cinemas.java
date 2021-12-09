@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Time;
 import java.util.List;
 
 @Entity
@@ -27,6 +28,15 @@ public class Cinemas implements Serializable {
 
     @Column(name = "address")
     private String cinema_address;
+
+    @Column(name = "start_time")
+    private Time cinema_start_time;
+
+    @Column(name = "end_time")
+    private Time cinema_end_time;
+
+    @Column(name = "cinema_price")
+    private Integer cinema_price;
 
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Cities> cities;

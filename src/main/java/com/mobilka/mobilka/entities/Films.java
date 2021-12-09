@@ -42,6 +42,9 @@ public class Films implements Serializable {
     @Column(name = "date")
     private Date film_date;
 
+    @Column(name = "announce")
+    private boolean announce;
+
     @ManyToMany(fetch = FetchType.LAZY)
     private List<Countries> countries;
 

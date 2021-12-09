@@ -43,6 +43,7 @@ public class MainRestController {
     @GetMapping(value = "/allFilms")
     public ResponseEntity<?> getAllFilms() {
         List<Films> films = filmsServices.getAllFilms();
+        System.out.println(films.get(0).getCinema().get(0));
         return new ResponseEntity<>(films, HttpStatus.OK);
     }
 
@@ -55,6 +56,7 @@ public class MainRestController {
     @GetMapping(value = "/allCinemas")
     public ResponseEntity<?> getAllCinemas() {
         List<Cinemas> cinemas = cinemasServices.getAllCinemas();
+        System.out.println(cinemas.get(0).getCinema_end_time());
         return new ResponseEntity<>(cinemas, HttpStatus.OK);
     }
 
