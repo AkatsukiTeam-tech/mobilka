@@ -14,7 +14,6 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Films implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

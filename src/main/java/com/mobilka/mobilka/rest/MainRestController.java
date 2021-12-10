@@ -70,6 +70,7 @@ public class MainRestController {
     @GetMapping(value = "/allSessions")
     public ResponseEntity<?> getAllSessions() {
         List<Sessions> sessions = sessionServices.getAllSessions();
+        System.out.println("Session: " + sessions.get(0).getSession_id());
         return new ResponseEntity<>(sessions, HttpStatus.OK);
     }
 
