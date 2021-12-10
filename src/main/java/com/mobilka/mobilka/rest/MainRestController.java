@@ -36,6 +36,9 @@ public class MainRestController {
     @Autowired
     private SessionServices sessionServices;
 
+    @Autowired
+    private TrailerServices trailerServices;
+
 
     @GetMapping(value = "/allCadres")
     public ResponseEntity<?> getAllCadres() {
@@ -78,5 +81,11 @@ public class MainRestController {
     public ResponseEntity<?> getAllDirectors() {
         List<Directors> directors = directorsServices.getAllDirectors();
         return new ResponseEntity<>(directors, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allTrailers")
+    public ResponseEntity<?> getAllTrailers() {
+        List<Trailers> trailers = trailerServices.getAllTrailers();
+        return new ResponseEntity<>(trailers, HttpStatus.OK);
     }
 }
