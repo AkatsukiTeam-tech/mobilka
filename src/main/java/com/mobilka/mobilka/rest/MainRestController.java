@@ -33,6 +33,9 @@ public class MainRestController {
     @Autowired
     private DirectorsServices directorsServices;
 
+    @Autowired
+    private SessionServices sessionServices;
+
 
     @GetMapping(value = "/allCadres")
     public ResponseEntity<?> getAllCadres() {
@@ -43,7 +46,6 @@ public class MainRestController {
     @GetMapping(value = "/allFilms")
     public ResponseEntity<?> getAllFilms() {
         List<Films> films = filmsServices.getAllFilms();
-        System.out.println(films.get(0).getCinema().get(0));
         return new ResponseEntity<>(films, HttpStatus.OK);
     }
 
@@ -56,7 +58,6 @@ public class MainRestController {
     @GetMapping(value = "/allCinemas")
     public ResponseEntity<?> getAllCinemas() {
         List<Cinemas> cinemas = cinemasServices.getAllCinemas();
-        System.out.println(cinemas.get(0).getCinema_end_time());
         return new ResponseEntity<>(cinemas, HttpStatus.OK);
     }
 
@@ -64,6 +65,12 @@ public class MainRestController {
     public ResponseEntity<?> getAllCountries() {
         List<Countries> countries = countriesServices.getAllCountries();
         return new ResponseEntity<>(countries, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allSessions")
+    public ResponseEntity<?> getAllSessions() {
+        List<Sessions> sessions = sessionServices.getAllSessions();
+        return new ResponseEntity<>(sessions, HttpStatus.OK);
     }
 
     @GetMapping(value = "/allDirectors")

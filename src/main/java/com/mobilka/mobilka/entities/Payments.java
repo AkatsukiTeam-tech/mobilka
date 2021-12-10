@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Date;
+
 @Entity
 @Table(name = "t_payments")
 @Data
@@ -18,6 +20,9 @@ public class Payments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long payment_id;
+
+    @Column(name = "added_date")
+    private Date date;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Films film;
