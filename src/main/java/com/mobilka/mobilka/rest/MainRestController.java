@@ -98,17 +98,26 @@ public class MainRestController {
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
+    @PostMapping(value = "/login")
+    public ResponseEntity<?> login(@RequestBody User user) {
+        User check = userServices.getUserByEmail(user.getEmail());
+
+        if (check != null && check.getPassword().equals(user.getPassword())){
+            return new ResponseEntity<>(check, HttpStatus.OK);
+        }
+
+        else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
     @PostMapping(value = "/register")
     public ResponseEntity<?> register(@RequestBody User user) {
         User check = userServices.getUserByEmail(user.getEmail());
 
         if (check == null){
             userServices.addUser(user);
-            return ResponseEntity.ok().build();
+            return new ResponseEntity<>(null, HttpStatus.OK);
         }
-        else{
-            return ResponseEntity.badRequest().build();
-        }
+        else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
     }
 }
