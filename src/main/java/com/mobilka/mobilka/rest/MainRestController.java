@@ -120,4 +120,16 @@ public class MainRestController {
         else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
     }
+
+    @PostMapping(value = "/update")
+    public ResponseEntity<?> update(@RequestBody User user) {
+        User check = userServices.getUserByEmail(user.getEmail());
+
+        if (check != null){
+            userServices.editUser(user);
+            return new ResponseEntity<>(null, HttpStatus.OK);
+        }
+        else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+
+    }
 }
