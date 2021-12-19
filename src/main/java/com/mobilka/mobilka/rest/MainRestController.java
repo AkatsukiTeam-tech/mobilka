@@ -39,6 +39,9 @@ public class MainRestController {
     @Autowired
     private TrailerServices trailerServices;
 
+    @Autowired
+    private UserServices userServices;
+
 
     @GetMapping(value = "/allCadres")
     public ResponseEntity<?> getAllCadres() {
@@ -87,5 +90,25 @@ public class MainRestController {
     public ResponseEntity<?> getAllTrailers() {
         List<Trailers> trailers = trailerServices.getAllTrailers();
         return new ResponseEntity<>(trailers, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/allUsers")
+    public ResponseEntity<?> getAllUsers() {
+        List<User> users = userServices.getAllUsers();
+        return new ResponseEntity<>(users, HttpStatus.OK);
+    }
+
+    @PostMapping(value = "/register")
+    public ResponseEntity<?> register(@RequestBody User user) {
+        User check = userServices.getUserByEmail(user.getEmail());
+
+        if (check == null){
+            userServices.addUser(user);
+            return ResponseEntity.ok().build();
+        }
+        else{
+            return ResponseEntity.badRequest().build();
+        }
+
     }
 }
