@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -23,11 +24,14 @@ public class Payments implements Serializable {
     private Long payment_id;
 
     @Column(name = "added_date")
-    private Date date;
+    private LocalDate date;
 
     @OneToOne(fetch = FetchType.LAZY)
     private Films film;
 
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Cinemas cinemas;
 }

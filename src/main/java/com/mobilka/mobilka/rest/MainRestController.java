@@ -2,6 +2,7 @@ package com.mobilka.mobilka.rest;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.mobilka.mobilka.dto.PaymentsDTO;
 import com.mobilka.mobilka.entities.*;
 import com.mobilka.mobilka.repositories.CadresRepository;
 import com.mobilka.mobilka.repositories.FilmsRepository;
@@ -11,6 +12,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.List;
 
 @RestController
@@ -41,6 +48,12 @@ public class MainRestController {
 
     @Autowired
     private UserServices userServices;
+
+    @Autowired
+    private PaymentsServices paymentsServices;
+
+    @Autowired
+    private PlacesServices placesServices;
 
 
     @GetMapping(value = "/allCadres")
@@ -130,6 +143,26 @@ public class MainRestController {
             return new ResponseEntity<>(null, HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
 
+    @PostMapping(value = "/create-payments")
+    public ResponseEntity<?> createPayments(@RequestBody PaymentsDTO dto) {
+        try {
+            LocalDate date = LocalDateTime.now().toLocalDate();
+            Payments payments = new Payments(null, date, dto.getFilms(), dto.getUser(), dto.getCinemas());
+            Payments newPayment = paymentsServices.addPayment(payments);
+            payments.setPayment_id(newPayment.getPayment_id());
+
+            System.out.println(payments.getDate());
+            for (Place p : dto.getPlaces()){
+                p.setPlace_id(null);
+                p.setPayments(payments);
+                placesServices.addPlace(p);
+            }
+            return new ResponseEntity<>(HttpStatus.OK);
+        }catch (Exception e){
+            e.printStackTrace();
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 }
