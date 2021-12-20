@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -36,10 +37,10 @@ public class Films implements Serializable {
     private int restriction;
 
     @Column(name = "duration")
-    private Time film_duration;
+    private Time duration;
 
     @Column(name = "date")
-    private Date film_date;
+    private LocalDate date;
 
     @Column(name = "announce")
     private boolean announce;

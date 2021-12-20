@@ -7,6 +7,7 @@ import com.mobilka.mobilka.services.FilmsServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -43,5 +44,15 @@ public class FilmsServiceImpl implements FilmsServices {
     @Override
     public void deleteFilm(Films film) {
         filmsRepository.delete(film);
+    }
+
+    @Override
+    public List<Films> findAllByDate(LocalDate date) {
+        return filmsRepository.findAllByDate(date);
+    }
+
+    @Override
+    public List<Films> findAllByAnnounce(Boolean flag) {
+        return filmsRepository.findAllByAnnounce(flag);
     }
 }

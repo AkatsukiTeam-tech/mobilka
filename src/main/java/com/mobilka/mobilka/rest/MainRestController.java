@@ -68,6 +68,23 @@ public class MainRestController {
         return new ResponseEntity<>(films, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/today")
+    public ResponseEntity<?> today() {
+
+        LocalDate date = LocalDateTime.now().toLocalDate();
+        List<Films> films = filmsServices.findAllByDate(date);
+
+        return new ResponseEntity<>(films, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/announce")
+    public ResponseEntity<?> announce() {
+
+        List<Films> films = filmsServices.findAllByAnnounce(true);
+
+        return new ResponseEntity<>(films, HttpStatus.OK);
+    }
+
     @GetMapping(value = "/getFilm/{id}")
     public ResponseEntity<?> getFilm(@PathVariable(name = "id")Long id) {
         Films film = filmsServices.getFilm(id);
@@ -128,7 +145,7 @@ public class MainRestController {
 
         if (check == null){
             userServices.addUser(user);
-            return new ResponseEntity<>(null, HttpStatus.OK);
+            return new ResponseEntity<>(HttpStatus.OK);
         }
         else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 
@@ -149,7 +166,7 @@ public class MainRestController {
     public ResponseEntity<?> createPayments(@RequestBody PaymentsDTO dto) {
         try {
             LocalDate date = LocalDateTime.now().toLocalDate();
-            Payments payments = new Payments(null, date, dto.getFilms(), dto.getUser(), dto.getCinemas());
+            Payments payments = new Payments(null, date, dto.getPrice(), dto.getFilms(), dto.getUser(), dto.getCinemas());
             Payments newPayment = paymentsServices.addPayment(payments);
             payments.setPayment_id(newPayment.getPayment_id());
 

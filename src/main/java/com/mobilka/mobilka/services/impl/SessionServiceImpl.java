@@ -1,5 +1,7 @@
 package com.mobilka.mobilka.services.impl;
 
+import com.mobilka.mobilka.entities.Cinemas;
+import com.mobilka.mobilka.entities.Films;
 import com.mobilka.mobilka.entities.Sessions;
 import com.mobilka.mobilka.repositories.SessionRepository;
 import com.mobilka.mobilka.services.SessionServices;
@@ -37,5 +39,10 @@ public class SessionServiceImpl implements SessionServices {
     @Override
     public void deleteSession(Sessions session) {
         sessionRepository.delete(session);
+    }
+
+    @Override
+    public Sessions findByCinemasAndAndFilms(Cinemas cinema_id, Films film_id) {
+        return sessionRepository.findByCinemasAndAndFilms(cinema_id, film_id);
     }
 }

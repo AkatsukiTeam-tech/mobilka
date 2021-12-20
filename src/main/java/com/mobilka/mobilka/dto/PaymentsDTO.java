@@ -19,6 +19,7 @@ public class PaymentsDTO {
     private Films films;
     private Cinemas cinemas;
     private User user;
+    private Integer price;
 
 
 }

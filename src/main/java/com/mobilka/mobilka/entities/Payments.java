@@ -26,6 +26,9 @@ public class Payments implements Serializable {
     @Column(name = "added_date")
     private LocalDate date;
 
+    @Column(name = "price")
+    private Integer price;
+
     @OneToOne(fetch = FetchType.LAZY)
     private Films film;
 
